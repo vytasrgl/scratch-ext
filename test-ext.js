@@ -20,10 +20,10 @@ new (function() {
       $.get('/say/'+txt)
   	};
     ext.walk = function() {
-      $.get('/crazy')
+      $.get('/walk')
     }; 	
     ext.crazy = function() {
-      $.get('/walk')
+      $.get('/crazy')
     };
 
     ScratchExtensions.register("test-ext", descriptor, ext);
