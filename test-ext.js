@@ -14,10 +14,10 @@ new (function() {
   		return {status: 2, msg: 'Device connected'}
   	};
   	
-  	ext.loadBlock = function(txt) {
+  	ext.sayThis = function(txt) {
   		console.log(txt)
   	};
   	
-  	ScratchExtensions.register("extensionloader", descriptor, ext);
+  	ScratchExtensions.register("test-ext", descriptor, ext);
 	
 });
