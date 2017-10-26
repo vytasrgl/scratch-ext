@@ -4,6 +4,8 @@ new (function() {
 	var descriptor = {
     	blocks: [
       		[' ', 'Say %s', 'sayThis', 'txt', 'txt'],
+          [' ', 'Walk', 'walk'],
+          [' ', 'Go Crazy', 'crazy']
     	],
     	txt: 'Hello'
   	};
@@ -15,9 +17,14 @@ new (function() {
   	};
   	
   	ext.sayThis = function(txt) {
-  		console.log(txt)
+      $.get('/say/'+txt)
   	};
-  	
-  	ScratchExtensions.register("test-ext", descriptor, ext);
-	
+    ext.walk = function() {
+      $.get('/crazy')
+    }; 	
+    ext.crazy = function() {
+      $.get('/walk')
+    };
+
+    ScratchExtensions.register("test-ext", descriptor, ext);
 });
