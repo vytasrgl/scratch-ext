@@ -32,7 +32,7 @@
         device = potentialDevices.shift();
         if (!device) return;
 
-        device.open({ bitRate: 115200, ctsFlowControl: 0 });
+        device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 });
         device.set_receive_handler(function(data) {
             console.log('Received: ' + data.byteLength);
 			console.log(data);
