@@ -90,8 +90,18 @@
 		device.send(stringToArrayBuffer("=send_command(\"Dont myndifydoo.<MO=EL,1.0,0.5><MO=HN,0,0.5><PM><MO=EL,0.1,0.5><MO=HN,0.3,0.5><PA><WK=W2><PA>\")\r\n"));
 	}; 	
 	ext.crazy = function() {
-		device.send(stringToArrayBuffer("crazy = \"You asked for it.<PA=2><MO=EL,1,0.5><PA=1.5><MO=HT,0,0.1><PA=0.8><MO=HT,1,0.2><PA=0.5><MO=HT,0.5,0.2> \"\r\n"));
-		device.send(stringToArrayBuffer("=send_command(crazy)\r\n"));
+		device.send(stringToArrayBuffer("crazy = \"You asked for it.<PA=2><MO=EL,1,0.5><PA=1.5><MO=HT,0,0.1><PA=0.8><MO=HT,1,0.2><PA=0.5><MO=HT,0.5,0.2> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=AR,1,0.5><PM><MO=AR,0,0.5><PM><MO=HN,1,0.2><PM><MO=HN,0,0.2><PM><MO=HN,1,0.2><PM><MO=HN,0,0.2><PM><MO=HN,1,0.2> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=AR,1,0.5><PM><MO=AR,0,0.5><PM><MO=HT,0.7,0.2><PM><MO=HT,0.3,0.2><PM><MO=HT,0.7,0.2><PM><MO=HT,0.3,0.2><PM><MO=HT,0.7,0.2> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=HT,0.5,0.2><MO=AR,1,0.5><PM><MO=AR,0,0.5><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><PM><MO=CH,1,0.1><MO=EB,0,0.1> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=HT,0,0.1><PA=0.4><MO=HN,1,0.2><MO=HT,1,0.2><PA=0.7><MO=HT,0.5,0.1><MO=CH,0,0.1> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=EB,1,0.1><PM><MO=AR,1,0.1><MO=MO,1.0,0.3><PA=0.5><MO=AR,0,2><MO=CH,0.5,2><MO=MO,0,2><MO=EB,0,2><MO=HN,0.3,2><PA=1> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=EL,0.1,0.5><PA=1.5> That's gonna hurt in the morning.<MO=EL,1.0,0.5><MO=HT,0.7,0.5><PM><MO=HT,0.3,0.5><PM> \"));
+		device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=HT,0.5,0.5><MO=EL,0.1,0.5><PA>)\"));
 	};
 	ext.wifiSetup = function(ssid, pwd) {
 		device.send(stringToArrayBuffer("=init_wifi(\"" + ssid + "\",\""+pwd+"\")\r\n"));
