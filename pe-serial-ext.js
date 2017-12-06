@@ -31,20 +31,26 @@
         // That will get us back here next time a device is connected.
         device = potentialDevices.shift();
         if (!device) return;
-
-        device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 });
+		if (device) {
+			device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 });
+		}
+	}
+	
+	function deviceOpened(dev){
+        if (!dev) {
+            // Opening the port failed.
+            tryNextDevice();
+            return;
+        }
         device.set_receive_handler(function(data) {
             console.log('Received: ' + data.byteLength);
 			console.log(data);
-       });
+        });
         console.log('Connected');
 		console.log(device);
-        // Tell the PicoBoard to send a input data every 50ms
-        var pingCmd = new Uint8Array(1);
-        pingCmd[0] = 1;
         poller = setInterval(function() {
 			console.log('Sending ping');
-            device.send("=node.random()\r\n");
+            device.send(Uint8Array.from("=node.random()\r\n"));
         }, 1000);
         watchdog = setTimeout(function() {
             // This device didn't get good data in time, so give up on it. Clean up and then move on.
