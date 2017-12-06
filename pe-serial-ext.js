@@ -31,15 +31,14 @@
         // That will get us back here next time a device is connected.
         device = potentialDevices.shift();
         if (!device) return;
-		console.log(device)
-		
-        device.open({ bitRate: 57600});
-		console.log("Open")
+
+        device.open({ bitRate: 115200, ctsFlowControl: 0 });
         device.set_receive_handler(function(data) {
             console.log('Received: ' + data.byteLength);
 			console.log(data);
        });
         console.log('Connected');
+		console.log(device);
         // Tell the PicoBoard to send a input data every 50ms
         var pingCmd = new Uint8Array(1);
         pingCmd[0] = 1;
