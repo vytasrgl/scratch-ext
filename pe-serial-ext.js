@@ -18,7 +18,7 @@
 	var potentialDevices = [];
 	var poller = null;
     var watchdog = null;
-	
+	v
 	ext._deviceConnected = function(dev) {
 		potentialDevices.push(dev);
 		if (!device) {
@@ -37,6 +37,12 @@
 		}
 	}
 	
+	function arrayBufferToString(buffer){
+		var arr = new Uint8Array(buffer);
+		var str = String.fromCharCode.apply(String, arr);
+		return str;
+	}
+	
 	function deviceOpened(dev){
         if (!dev) {
 			console.log("Failed to open the port")
@@ -46,7 +52,8 @@
         }
         device.set_receive_handler(function(data) {
             console.log('Received: ' + data.byteLength);
-			console.log(data);
+			var dataView = new DataView(data);
+			console.log(arrayBufferToString(data));
         });
         console.log('Connected');
 		console.log(device);
