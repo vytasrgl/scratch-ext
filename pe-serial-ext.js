@@ -20,7 +20,6 @@
     var watchdog = null;
 	
 	ext._deviceConnected = function(dev) {
-		console.log(dev)
 		potentialDevices.push(dev);
 		if (!device) {
 			tryNextDevice();
@@ -32,8 +31,10 @@
         // That will get us back here next time a device is connected.
         device = potentialDevices.shift();
         if (!device) return;
-
-        device.open({ bitRate: 115200, ctsFlowControl: 0 });
+		console.log(device)
+		
+        device.open({ bitRate: 57600});
+		console.log("Open")
         device.set_receive_handler(function(data) {
             console.log('Received: ' + data.byteLength);
 			console.log(data);
