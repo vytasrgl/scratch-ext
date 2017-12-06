@@ -67,7 +67,7 @@
         poller = setInterval(function() {
 			console.log('Sending ping');
             device.send(stringToArrayBuffer("=node.random()\r\n"));
-        }, 1000);
+        }, 10000);
         watchdog = setTimeout(function() {
             // This device didn't get good data in time, so give up on it. Clean up and then move on.
             // If we get good data then we'll terminate this watchdog.
@@ -98,16 +98,16 @@
         return {status: 2, msg: 'PicoBoard connected'};
     }
   	ext.sayThis = function(txt) {
-		console.log(txt)
+		device.send(stringToArrayBuffer("=send_command(\"" + txt + "\")\r\n"));
   	};
 	ext.walk = function() {
-		console.log('walk')
+		device.send(stringToArrayBuffer("=send_command(\"I am walking \")\r\n"));
 	}; 	
 	ext.crazy = function() {
-		console.log('crazy')
+		device.send(stringToArrayBuffer("=send_command(\"I am Crazy \")\r\n"));
 	};
 	ext.connect = function() {
-		console.log('connect')
+		device.send(stringToArrayBuffer("=connect_tcp()\r\n"));
 	};
 	var descriptor = {
     	blocks: [
