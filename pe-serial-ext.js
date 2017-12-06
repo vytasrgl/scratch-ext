@@ -101,8 +101,8 @@
 			[' ', 'Say %s', 'sayThis', 'txt', 'hello'],
 			[' ', 'Walk', 'walk'],
 			[' ', 'Go Crazy', 'crazy'],
-			[' ', 'connect','connect']
-			[' ', 'Einstein SSID  %s passwrod %s' , 'wifiSetup', 'ssid', 'EINSTEIN0000','pwd', 'genius0000'],
+			[' ', 'connect','connect'],
+			[' ', 'Einstein SSID  %s passwrod %s' , 'wifiSetup', 'ssid', 'EINSTEIN0000','pwd', 'genius0000']
     	],
     
 	};
