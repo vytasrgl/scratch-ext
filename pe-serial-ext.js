@@ -39,6 +39,7 @@
 	
 	function deviceOpened(dev){
         if (!dev) {
+			console.log("Failed to open the port")
             // Opening the port failed.
             tryNextDevice();
             return;
