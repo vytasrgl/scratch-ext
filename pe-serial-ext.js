@@ -43,6 +43,13 @@
 		return str;
 	}
 	
+	function stringToArrayBuffer(str){
+		var arr = new Uint8Array(str.length);
+		for(var i=str.length; i--; )
+			arr[i] = str.charCodeAt(i);
+		return arr.buffer;
+	}
+
 	function deviceOpened(dev){
         if (!dev) {
 			console.log("Failed to open the port")
@@ -59,7 +66,7 @@
 		console.log(device);
         poller = setInterval(function() {
 			console.log('Sending ping');
-            device.send(Uint8Array.from("=node.random()\r\n"));
+            device.send(stringToArrayBuffer("=node.random()\r\n"));
         }, 1000);
         watchdog = setTimeout(function() {
             // This device didn't get good data in time, so give up on it. Clean up and then move on.
