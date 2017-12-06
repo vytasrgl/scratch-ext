@@ -14,8 +14,11 @@
  */
 
 (function(ext) {
-
+    var device = null;
 	var potentialDevices = [];
+	var poller = null;
+    var watchdog = null;
+	
 	ext._deviceConnected = function(dev) {
 		console.log(dev)
 		potentialDevices.push(dev);
@@ -23,7 +26,36 @@
 			tryNextDevice();
 		}
 	};
+	
+    function tryNextDevice() {
+        // If potentialDevices is empty, device will be undefined.
+        // That will get us back here next time a device is connected.
+        device = potentialDevices.shift();
+        if (!device) return;
 
+        device.open({ bitRate: 115200, ctsFlowControl: 0 });
+        device.set_receive_handler(function(data) {
+            console.log('Received: ' + data.byteLength);
+			console.log(data);
+       });
+
+        // Tell the PicoBoard to send a input data every 50ms
+        var pingCmd = new Uint8Array(1);
+        pingCmd[0] = 1;
+        poller = setInterval(function() {
+            device.send("\r\n=node.random()\r\n");
+        }, 1000);
+        watchdog = setTimeout(function() {
+            // This device didn't get good data in time, so give up on it. Clean up and then move on.
+            // If we get good data then we'll terminate this watchdog.
+            clearInterval(poller);
+            poller = null;
+            device.set_receive_handler(null);
+            device.close();
+            device = null;
+            tryNextDevice();
+        }, 250);
+    };
 	ext._deviceRemoved = function(dev) {
 		if(device != dev) return;
 		if(poller) poller = clearInterval(poller);
@@ -37,10 +69,11 @@
 	}	
 	  	ext._shutdown = function() {};
   	
-  	ext._getStatus = function() {
-  		return {status: 2, msg: 'Device connected'}
-  	};
-  	
+    ext._getStatus = function() {
+        if(!device) return {status: 1, msg: 'Board disconnected'};
+        if(watchdog) return {status: 1, msg: 'Waiting for board to be connected'};
+        return {status: 2, msg: 'PicoBoard connected'};
+    }
   	ext.sayThis = function(txt) {
 		console.log(txt)
   	};
