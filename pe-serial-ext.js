@@ -32,7 +32,7 @@
         device = potentialDevices.shift();
         if (!device) return;
 		if (device) {
-			device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 });
+			device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 }, deviceOpened);
 		}
 	}
 	
