@@ -32,6 +32,7 @@
         device = potentialDevices.shift();
         if (!device) return;
 		if (device) {
+			console.log("Attempt to connect to serial")
 			device.open({ stopBits: 0, bitRate: 115200, ctsFlowControl: 0 }, deviceOpened);
 		}
 	}
