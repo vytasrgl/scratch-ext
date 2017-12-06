@@ -18,7 +18,7 @@
 	var potentialDevices = [];
 	var poller = null;
     var watchdog = null;
-	v
+
 	ext._deviceConnected = function(dev) {
 		potentialDevices.push(dev);
 		if (!device) {
