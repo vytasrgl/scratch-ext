@@ -91,7 +91,7 @@
 	}; 	
 	ext.crazy = function() {
 		device.send(stringToArrayBuffer("crazy = \"You asked for it.<PA=2><MO=EL,1,0.5><PA=1.5><MO=HT,0,0.1><PA=0.8><MO=HT,1,0.2><PA=0.5><MO=HT,0.5,0.2> \"\r\n"));
-		device.send(stringToArrayBuffer("=send_command(crazy)\r\n");
+		device.send(stringToArrayBuffer("=send_command(crazy)\r\n"));
 	};
 	ext.wifiSetup = function(ssid, pwd) {
 		device.send(stringToArrayBuffer("=init_wifi(\"" + ssid + "\",\""+pwd+"\")\r\n"));
