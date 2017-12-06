@@ -43,18 +43,18 @@
         var pingCmd = new Uint8Array(1);
         pingCmd[0] = 1;
         poller = setInterval(function() {
-            device.send("\r\n=node.random()\r\n");
+            device.send("=node.random()\r\n");
         }, 1000);
         watchdog = setTimeout(function() {
             // This device didn't get good data in time, so give up on it. Clean up and then move on.
             // If we get good data then we'll terminate this watchdog.
-            clearInterval(poller);
-            poller = null;
-            device.set_receive_handler(null);
-            device.close();
-            device = null;
-            tryNextDevice();
-        }, 250);
+            //clearInterval(poller);
+            //poller = null;
+            //device.set_receive_handler(null);
+            //device.close();
+            //device = null;
+            //tryNextDevice();
+        }, 100000);
     };
 	ext._deviceRemoved = function(dev) {
 		if(device != dev) return;
