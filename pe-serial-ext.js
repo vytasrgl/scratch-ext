@@ -38,11 +38,12 @@
             console.log('Received: ' + data.byteLength);
 			console.log(data);
        });
-
+        console.log('Connected');
         // Tell the PicoBoard to send a input data every 50ms
         var pingCmd = new Uint8Array(1);
         pingCmd[0] = 1;
         poller = setInterval(function() {
+			console.log('Sending ping');
             device.send("=node.random()\r\n");
         }, 1000);
         watchdog = setTimeout(function() {
