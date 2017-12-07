@@ -83,8 +83,10 @@
         if(watchdog) return {status: 1, msg: 'Waiting for board to be connected'};
         return {status: 2, msg: 'PicoBoard connected'};
     }
-  	ext.sayThis = function(txt) {
+  	ext.sayThis = function(txt, cb) {
 		device.send(stringToArrayBuffer("=send_command(\"" + txt + "\")\r\n"));
+		// small callback needed to prevent sending different commands at same time
+		window.setTimeout(function(){cb();}, 10);
   	};
 	ext.walk = function() {
 		device.send(stringToArrayBuffer("=send_command(\"Dont myndifydoo.<MO=EL,1.0,0.5><MO=HN,0,0.5><PM><MO=EL,0.1,0.5><MO=HN,0.3,0.5><PA><WK=W2><PA>\")\r\n"));
@@ -113,23 +115,23 @@
 
 	var descriptor = {
     	blocks: [
-			[' ', 'Einstein SSID  %s passwrod %s' , 'wifiSetup', 'EINSTEIN0000', 'genius0000'],
-			[' ', 'Say %s', 'sayThis', 'hello'],
-			[' ', 'Right arm down', 'rad'],
-			[' ', 'Right arm pointing', 'rap'],
-			[' ', 'Head down', 'hd'],
-			[' ', 'Head middle', 'hm'],
-			[' ', 'Head up', 'hu'],
-			[' ', 'Close mouth', 'cm'],
-			[' ', 'Open mouth', 'om'],
-			[' ', 'Open mouth tongue', 'omt'],
-			[' ', 'Eye lid open', 'elo'],
-			[' ', 'Eye lid close', 'elc'],
-			[' ', 'Eyebrow downn', 'ed'],
-			[' ', 'Eyebrow up', 'eu'],
-			[' ', 'Chin up (Smile)', 'cu'],
-			[' ', 'Chin Neutral', 'cn'],
-			[' ', 'Chin down (Frown)', 'cd']
+			['w', 'Einstein SSID  %s passwrod %s' , 'wifiSetup', 'EINSTEIN0000', 'genius0000'],
+			['w', 'Say %s', 'sayThis', 'hello'],
+			['w', 'Right arm down', 'rad'],
+			['w', 'Right arm pointing', 'rap'],
+			['w', 'Head down', 'hd'],
+			['w', 'Head middle', 'hm'],
+			['w', 'Head up', 'hu'],
+			['w', 'Close mouth', 'cm'],
+			['w', 'Open mouth', 'om'],
+			['w', 'Open mouth tongue', 'omt'],
+			['w', 'Eye lid open', 'elo'],
+			['w', 'Eye lid close', 'elc'],
+			['w', 'Eyebrow downn', 'ed'],
+			['w', 'Eyebrow up', 'eu'],
+			['w', 'Chin up (Smile)', 'cu'],
+			['w', 'Chin Neutral', 'cn'],
+			['w', 'Chin down (Frown)', 'cd']
     	],
     
 	};
