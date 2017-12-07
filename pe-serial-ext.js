@@ -95,21 +95,21 @@
 		device.send(stringToArrayBuffer("=init_wifi(\"" + ssid + "\",\""+pwd+"\")\r\n"));
   	};
 	// Motor functions
-	ext.rad = function() { this.sayThis("<MO=AR,0,0.5>") };
-	ext.rap = function() { this.sayThis("<MO=AR,1,0.5>") };
-	ext.hd = function() { this.sayThis("<MO=HN,0,0.5>") };
-	ext.hm = function() { this.sayThis("<MO=HN,0.5,0.5>") };
-	ext.hu = function() { this.sayThis("<MO=HN,1,0.5>") };
-	ext.cm = function() { this.sayThis("<MO=MO,0,0.5>") };
-	ext.om = function() { this.sayThis("<MO=MO,0.5,0.5>") };
-	ext.omt = function() { this.sayThis("<MO=MO,1,0.5>") };
-	ext.elo = function() { this.sayThis("<MO=EL,0,0.5>") };
-	ext.elc = function() { this.sayThis("<MO=EL,1,0.5>") };
-	ext.ed = function() { this.sayThis("<MO=EB,0,0.5>") };
-	ext.eu = function() { this.sayThis("<MO=EB,1,0.5>") };
-	ext.cu = function() { this.sayThis("<MO=CH,0,0.5>") };
-	ext.cn = function() { this.sayThis("<MO=CH,0.5,0.5>") };
-	ext.cd = function() { this.sayThis("<MO=CH,1,0.5>") };
+	ext.rad = function(cb) { this.sayThis("<MO=AR,0,0.5>",cb) };
+	ext.rap = function(cb) { this.sayThis("<MO=AR,1,0.5>",cb) };
+	ext.hd = function(cb) { this.sayThis("<MO=HN,0,0.5>",cb) };
+	ext.hm = function(cb) { this.sayThis("<MO=HN,0.5,0.5>",cb) };
+	ext.hu = function(cb) { this.sayThis("<MO=HN,1,0.5>",cb) };
+	ext.cm = function(cb) { this.sayThis("<MO=MO,0,0.5>",cb) };
+	ext.om = function(cb) { this.sayThis("<MO=MO,0.5,0.5>",cb) };
+	ext.omt = function(cb) { this.sayThis("<MO=MO,1,0.5>") };
+	ext.elo = function(cb) { this.sayThis("<MO=EL,0,0.5>",cb) };
+	ext.elc = function(cb) { this.sayThis("<MO=EL,1,0.5>",cb) };
+	ext.ed = function(cb) { this.sayThis("<MO=EB,0,0.5>",cb) };
+	ext.eu = function(cb) { this.sayThis("<MO=EB,1,0.5>",cb) };
+	ext.cu = function(cb) { this.sayThis("<MO=CH,0,0.5>",cb) };
+	ext.cn = function(cb) { this.sayThis("<MO=CH,0.5,0.5>",cb) };
+	ext.cd = function(cb) { this.sayThis("<MO=CH,1,0.5>",cb) };
 
 
 
