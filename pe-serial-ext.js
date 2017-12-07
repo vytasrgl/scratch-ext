@@ -89,32 +89,47 @@
 	ext.walk = function() {
 		device.send(stringToArrayBuffer("=send_command(\"Dont myndifydoo.<MO=EL,1.0,0.5><MO=HN,0,0.5><PM><MO=EL,0.1,0.5><MO=HN,0.3,0.5><PA><WK=W2><PA>\")\r\n"));
 	}; 	
-	ext.crazy = function() {
-		device.send(stringToArrayBuffer("crazy = \"You asked for it.<PA=2><MO=EL,1,0.5><PA=1.5><MO=HT,0,0.1><PA=0.8><MO=HT,1,0.2><PA=0.5><MO=HT,0.5,0.2> \"\r\n"));
-		device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=AR,1,0.5><PM><MO=AR,0,0.5><PM><MO=HN,1,0.2><PM><MO=HN,0,0.2><PM><MO=HN,1,0.2><PM><MO=HN,0,0.2><PM><MO=HN,1,0.2> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=AR,1,0.5><PM><MO=AR,0,0.5><PM><MO=HT,0.7,0.2><PM><MO=HT,0.3,0.2><PM><MO=HT,0.7,0.2><PM><MO=HT,0.3,0.2><PM><MO=HT,0.7,0.2> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=HT,0.5,0.2><MO=AR,1,0.5><PM><MO=AR,0,0.5><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><PM><MO=CH,1,0.1><MO=EB,0,0.1> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1><PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=CH,0,0.1><MO=EB,1,0.1> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<PM><MO=CH,1,0.1><MO=EB,0,0.1><PM><MO=HT,0,0.1><PA=0.4><MO=HN,1,0.2><MO=HT,1,0.2><PA=0.7><MO=HT,0.5,0.1><MO=CH,0,0.1> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=EB,1,0.1><PM><MO=AR,1,0.1><MO=MO,1.0,0.3><PA=0.5><MO=AR,0,2><MO=CH,0.5,2><MO=MO,0,2><MO=EB,0,2><MO=HN,0.3,2><PA=1> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=EL,0.1,0.5><PA=1.5> That's gonna hurt in the morning.<MO=EL,1.0,0.5><MO=HT,0.7,0.5><PM><MO=HT,0.3,0.5><PM> \"\r\n"));
-		//device.send(stringToArrayBuffer("crazy = crazy .. \"<MO=HT,0.5,0.5><MO=EL,0.1,0.5><PA>\"\r\n"));
-		device.send(stringToArrayBuffer("=send_command(crazy)\r\n"));
-	};
 	ext.wifiSetup = function(ssid, pwd) {
 		device.send(stringToArrayBuffer("=init_wifi(\"" + ssid + "\",\""+pwd+"\")\r\n"));
   	};
+	// Motor functions
+	ext.rad = function() { this.sayThis("<MO=AR,0,0.5>") };
+	ext.rap = function() { this.sayThis("<MO=AR,1,0.5>") };
+	ext.hd = function() { this.sayThis("<MO=HN,0,0.5>") };
+	ext.hm = function() { this.sayThis("<MO=HN,0.5,0.5>") };
+	ext.hu = function() { this.sayThis("<MO=HN,1,0.5>") };
+	ext.cm = function() { this.sayThis("<MO=MO,0,0.5>") };
+	ext.om = function() { this.sayThis("<MO=MO,0.5,0.5>") };
+	ext.omt = function() { this.sayThis("<MO=MO,1,0.5>") };
+	ext.elo = function() { this.sayThis("<MO=EL,0,0.5>") };
+	ext.elc = function() { this.sayThis("<MO=EL,1,0.5>") };
+	ext.ed = function() { this.sayThis("<MO=EB,0,0.5>") };
+	ext.eu = function() { this.sayThis("<MO=EB,1,0.5>") };
+	ext.cu = function() { this.sayThis("<MO=CH,0,0.5>") };
+	ext.cn = function() { this.sayThis("<MO=CH,0.5,0.5>") };
+	ext.cd = function() { this.sayThis("<MO=CH,1,0.5>") };
+
+
 
 	var descriptor = {
     	blocks: [
-			[' ', 'Say %s', 'sayThis', 'txt', 'hello'],
-			[' ', 'Walk', 'walk'],
-			[' ', 'Go Crazy', 'crazy'],
-			[' ', 'connect','connect'],
-			[' ', 'Einstein SSID  %s passwrod %s' , 'wifiSetup', 'ssid', 'EINSTEIN0000','pwd', 'genius0000']
+			[' ', 'Einstein SSID  %s passwrod %s' , 'wifiSetup', 'EINSTEIN0000', 'genius0000'],
+			[' ', 'Say %s', 'sayThis', 'hello'],
+			[' ', 'Right arm down', 'rad'],
+			[' ', 'Right arm pointing', 'rap'],
+			[' ', 'Head down', 'hd'],
+			[' ', 'Head middle', 'hm'],
+			[' ', 'Head up', 'hu'],
+			[' ', 'Close mouth', 'cm'],
+			[' ', 'Open mouth', 'om'],
+			[' ', 'Open mouth tongue', 'omt'],
+			[' ', 'Eye lid open', 'elo'],
+			[' ', 'Eye lid close', 'elc'],
+			[' ', 'Eyebrow downn', 'ed'],
+			[' ', 'Eyebrow up', 'eu'],
+			[' ', 'Chin up (Smile)', 'cu'],
+			[' ', 'Chin Neutral', 'cn'],
+			[' ', 'Chin down (Frown)', 'cd']
     	],
     
 	};
