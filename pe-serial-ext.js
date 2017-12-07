@@ -79,7 +79,7 @@
 	  	ext._shutdown = function() {};
   	
     ext._getStatus = function() {
-        if(!device) return {status: 1, msg: 'Board disconnected'};
+        if(!device) return {status: 0, msg: 'Can not connect to serial port'};
         if(watchdog) return {status: 1, msg: 'Waiting for board to be connected'};
         return {status: 2, msg: 'PicoBoard connected'};
     }
@@ -102,7 +102,7 @@
 	ext.hu = function(cb) { this.sayThis("<MO=HN,1,0.5>",cb) };
 	ext.cm = function(cb) { this.sayThis("<MO=MO,0,0.5>",cb) };
 	ext.om = function(cb) { this.sayThis("<MO=MO,0.5,0.5>",cb) };
-	ext.omt = function(cb) { this.sayThis("<MO=MO,1,0.5>") };
+	ext.omt = function(cb) { this.sayThis("<MO=MO,1,0.5>", cb) };
 	ext.elo = function(cb) { this.sayThis("<MO=EL,0,0.5>",cb) };
 	ext.elc = function(cb) { this.sayThis("<MO=EL,1,0.5>",cb) };
 	ext.ed = function(cb) { this.sayThis("<MO=EB,0,0.5>",cb) };
