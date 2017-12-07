@@ -86,7 +86,7 @@
   	ext.sayThis = function(txt, cb) {
 		device.send(stringToArrayBuffer("=send_command(\"" + txt + "\")\r\n"));
 		// small callback needed to prevent sending different commands at same time
-		window.setTimeout(function(){cb();}, 10);
+		window.setTimeout(function(){cb();}, 100);
   	};
 	ext.walk = function() {
 		device.send(stringToArrayBuffer("=send_command(\"Dont myndifydoo.<MO=EL,1.0,0.5><MO=HN,0,0.5><PM><MO=EL,0.1,0.5><MO=HN,0.3,0.5><PA><WK=W2><PA>\")\r\n"));
